@@ -11,6 +11,13 @@ Keitan's DiscordBot
 # 必要なもの
 - LINE Dev アカウント
 - Google Dev アカウント
+
+# 必要なパッケージ
+- discord.js
+- fs
+- simple-tcpscan
+- request
+- node-schedule
 # 注意
 ナポアンサーバーなどで使われているNGワード通知機能については、それぞれのサーバー専用に作っているので公開しません。
 
