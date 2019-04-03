@@ -17,7 +17,6 @@ const USER_ID = '**LINE_USER_ID**';
 //グローバル関数宣言
 const charset = 'utf-8';
 const now = new Date();
-const oshogatsu = new Date(now.getFullYear() + "!1/1");
 
 const red = '\u001b[31m';
 const green = '\u001b[32m';
