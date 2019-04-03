@@ -1,13 +1,8 @@
 const {Client, RichEmbed} = require('discord.js');
 const client = new Client();
-const twitter = require('twitter');
-const moment = require('moment');
-const fetch = require('node-fetch');
-const https = require("https");
 const fs = require("fs");
 const tcpscan = require("simple-tcpscan");
 const request = require('request');
-const cheerio = require('cheerio-httpcli');
 const schedule = require("node-schedule");
 
 //ユーザー環境変数
@@ -24,13 +19,6 @@ const reset = '\u001b[0m';
 
 const lastResults = JSON.parse(fs.readFileSync('**FILE_PLACE**'));
 const lastResultsChusen = JSON.parse(fs.readFileSync('**FILE_PLACE**'));
-
-const Twiclient = new twitter({
-  consumer_key: '**YOUR_API_KEY**',
-  consumer_secret: '**YOUR_API_SECRET**',
-  access_token_key: '**YOUR_ACCESS_KEY**',
-  access_token_secret: '**YOUR_ ACCESS_SECRET**',
-});
 
 client.on('uncaughtException', function(err){
     var postData = {
@@ -345,27 +333,6 @@ request.get('https://api.p2pquake.net/v1/human-readable', callback);
         }
   tcpscan.run({'host': address, 'port': portnum  
   }).then(() => msg.reply(address + "のポート" + portnum + "は正常です。"), () => msg.reply(address + "のポート" + portnum + "は閉じています。"));
-  }
-  
-  // ツイート表示
-  if(msg.content === '?Twiter'){
-    (function(){
-      let params = {
-        screen_name: 'YOUR_ID',
-        count: 1,
-        include_rts: false,
-        exclude_replies: true
-      };
-      Twiclient.get('statuses/user_timeline', params, function (error, tweets, response){
-        if(!error){
-          for (let i = 0; i < tweets.length; i++){
-          msg.channel.send('ツイート```' + tweets[i].text + '```');
-          }
-        }else{
-          msg.channel.send(error);
-        }
-      });
-    })();
   }
 
   // 遅延情報
