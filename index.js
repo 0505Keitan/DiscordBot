@@ -149,6 +149,15 @@ client.on('message', async msg => {
         return;
     }
     
+    if(msg.content === '?invite'){
+            var option = {
+                "maxUses":1,
+                "maxAge":18000,
+                "unique": true,
+                };
+            msg.channel.createInvite(option).then(inviteCode => msg.author.send('招待コードを発行しました。このコードは１回までで有効期限は5時間です。\nhttps://discord.gg/' + inviteCode.code));
+            }
+    
     if(msg.content === '?length'){
         const responses = await msg.channel.awaitMessages(msg2 => msg2.author.id === msg.author.id, {
             max: 1,
