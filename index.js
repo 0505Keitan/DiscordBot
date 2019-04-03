@@ -523,9 +523,6 @@ level[userId].authorUsername = msg.author.username;
             }else{
         return;
         }
-
-        
-        
         
         var levelMsgCount = level[userId].msgCount;
         
