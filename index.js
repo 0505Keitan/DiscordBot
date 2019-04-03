@@ -150,7 +150,7 @@ client.on('message', async msg => {
         return;
     }
     
-    if(msg.content === '!length'){
+    if(msg.content === '?length'){
         const responses = await msg.channel.awaitMessages(msg2 => msg2.author.id === msg.author.id, {
             max: 1,
             time: 10000,
@@ -163,7 +163,7 @@ client.on('message', async msg => {
     }
     
     // BITコインレート
-    if(msg.content === "!btc"){
+    if(msg.content === "?btc"){
         function callback(error, response, body){
           if(!error && response.statusCode == 200){
               var res = JSON.parse(body);
@@ -174,7 +174,7 @@ client.on('message', async msg => {
     }
     
   // ETHレート
-  if(msg.content === "!eth"){
+  if(msg.content === "?eth"){
             function callback(error, response, body){
           if(!error && response.statusCode == 200){
               var res = JSON.parse(body);
@@ -185,7 +185,7 @@ client.on('message', async msg => {
   }
   
   // XEMレート
-  if(msg.content === "!xem"){
+  if(msg.content === "?xem"){
       function callback(error, response, body){
           if(!error && response.statusCode == 200){
               var res = JSON.parse(body);
@@ -196,7 +196,7 @@ client.on('message', async msg => {
   }
   
   // 地震情報
-  if(msg.content === "!jishin"){
+  if(msg.content === "?jishin"){
     
     function callback(error, response, body){
   if(!error && response.statusCode == 200){
@@ -274,7 +274,7 @@ request.get('https://api.p2pquake.net/v1/human-readable', callback);
 // ここまで地震
 
 
-  if(msg.content.startsWith('!eval')){
+  if(msg.content.startsWith('?eval')){
         if(msg.author.id === "YOUR_ID"){
             var eva = args[1];
             var unicode = eva.charCodeAt(0);
@@ -295,7 +295,7 @@ request.get('https://api.p2pquake.net/v1/human-readable', callback);
         }
     }
     
-    if(msg.content.startsWith('!port')){
+    if(msg.content.startsWith('?port')){
          var tmp = msg.content.split(' ');
       var portnum = tmp[1];
       var address = tmp[2];
@@ -340,7 +340,7 @@ request.get('https://api.p2pquake.net/v1/human-readable', callback);
   }
   
   // ツイート表示
-  if(msg.content === '!Twiter'){
+  if(msg.content === '?Twiter'){
     (function(){
       let params = {
         screen_name: 'YOUR_ID',
@@ -361,7 +361,7 @@ request.get('https://api.p2pquake.net/v1/human-readable', callback);
   }
 
   // 遅延情報
-  if(msg.content === '!delay'){
+  if(msg.content === '?delay'){
     (async () => {
         const url = 'https://rti-giken.jp/fhc/api/train_tetsudo/delay.json';
         const obj = await fetch(url).then(res => res.json());
@@ -371,7 +371,7 @@ request.get('https://api.p2pquake.net/v1/human-readable', callback);
   }
 
   // ヘルプコマンド
-  if(msg.content === '!help'){
+  if(msg.content === '?help'){
     const embed = new RichEmbed()
     msg.channel.send({embed: {
     color: 0x00FF00,
@@ -391,7 +391,7 @@ request.get('https://api.p2pquake.net/v1/human-readable', callback);
   }
   
   // 朝の挨拶
-  if(msg.content === '!morning'){
+  if(msg.content === '?morning'){
     if(hour <= 0 || hour <= 5){
       msg.channel.send('おはようございます。早いですね！今は' + hour + '時です！');
     } else if(hour <= 6 || hour <= 8){
@@ -406,7 +406,7 @@ request.get('https://api.p2pquake.net/v1/human-readable', callback);
   }
   
   // サイコロ
-  if(msg.content === "!rand"){
+  if(msg.content === "?rand"){
   ran = Math.floor(Math.random() * 5);
   if(ran == 0) randa = "1";
   if(ran == 1) randa = "2";
@@ -418,7 +418,7 @@ request.get('https://api.p2pquake.net/v1/human-readable', callback);
   }
   
   // 抽選器
-  if(msg.content === '!chusen'){
+  if(msg.content === '?chusen'){
       if(level[userId].level >= 3){
   const userId = msg.author.id;
 const currentTimestamp = new Date().getTime();
@@ -465,7 +465,7 @@ msg.reply('レベルが足りません');
 }
   
   // おみくじ
-  if(msg.content === '!omikuji'){
+  if(msg.content === '?omikuji'){
     if(year === year && mon === 12 && day > 15){
         msg.reply('新年になってから実行可能です。');
         return;
@@ -511,11 +511,11 @@ var place = '**YOUR_PLACE**';
   }
   
   // 時間表示
-  if(msg.content === '!time'){
+  if(msg.content === '?time'){
     msg.channel.send('現在の時刻は' + year + '年' + mon + '月' + day + '日' + hour + '時' + min + '分です。');
   }
 
-if(msg.content.startsWith('!nickname')){
+if(msg.content.startsWith('?nickname')){
       if(level[userId].level >= 3){
 var nick = args[1];
 var afId = msg.author.id;
@@ -528,7 +528,7 @@ return;
     }
 }
   
-  if(msg.content === '!shutdown'){
+  if(msg.content === '?shutdown'){
     if(msg.author.id === 'YOUR_ID'){
       var alertmsg = function (){
         process.exit(1);
